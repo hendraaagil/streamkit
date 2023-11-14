@@ -1,7 +1,13 @@
-import NextAuth from 'next-auth'
+import NextAuth, { NextAuthOptions } from 'next-auth'
 import SpotifyProvider from 'next-auth/providers/spotify'
 
-const handler = NextAuth({
+/**
+ * Separate authOptions to be used in getServerSession
+ * https://next-auth.js.org/configuration/nextjs#getserversession
+ *
+ * Still have issue: https://github.com/nextauthjs/next-auth/issues/7423#issuecomment-1783934412
+ */
+export const authOptions: NextAuthOptions = {
   providers: [
     SpotifyProvider({
       clientId: process.env.SPOTIFY_CLIENT_ID as string,
@@ -22,6 +28,9 @@ const handler = NextAuth({
       return session
     },
   },
-})
+  secret: process.env.NEXTAUTH_SECRET,
+}
+
+const handler = NextAuth(authOptions)
 
 export { handler as GET, handler as POST }
