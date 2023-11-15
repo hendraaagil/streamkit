@@ -34,7 +34,7 @@ const Information = ({ session }: AccountProps) => {
 
 export const Account = ({ session }: AccountProps) => {
   return (
-    <SessionProvider session={session} basePath="/auth">
+    <SessionProvider session={session}>
       <Information session={session} />
     </SessionProvider>
   )

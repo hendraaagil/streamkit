@@ -1,5 +1,5 @@
-import { Account } from '@/app/components'
-import { getAuth } from '@/app/libs/next-auth'
+import { Account } from '@/components'
+import { getAuth } from '@/libs/next-auth'
 
 export default async function Page() {
   const auth = await getAuth()

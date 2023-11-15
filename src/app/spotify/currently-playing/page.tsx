@@ -1,6 +1,6 @@
 'use client'
 
-import { SpotifyNowPlaying } from '@/app/types/spotify'
+import { SpotifyNowPlaying } from '@/types/spotify'
 import useSWR from 'swr'
 
 const fetcher = (url: string, token: string) =>

@@ -1,7 +1,7 @@
 import type {
   SpotifyCurrentlyPlaying,
   SpotifyNowPlaying,
-} from '@/app/types/spotify'
+} from '@/types/spotify'
 import qs from 'querystring'
 
 const client_id = process.env.SPOTIFY_CLIENT_ID
@@ -38,7 +38,11 @@ export const getNowPlaying = async (
     },
     cache: 'no-store',
   })
+
   const song: SpotifyCurrentlyPlaying = await response.json()
+  if (!song.is_playing) {
+    return { isPlaying: false }
+  }
 
   const isPlaying = song.is_playing
   const title = song.item.name

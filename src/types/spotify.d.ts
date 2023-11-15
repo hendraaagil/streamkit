@@ -61,12 +61,12 @@ export type SpotifyCurrentlyPlaying = {
 }
 
 export type SpotifyNowPlaying = {
-  album: string
-  albumImageUrl: string
-  artist: string
+  album?: string
+  albumImageUrl?: string
+  artist?: string
   isPlaying: boolean
-  songUrl: string
-  title: string
-  progress: number
-  duration: number
+  songUrl?: string
+  title?: string
+  progress?: number
+  duration?: number
 }

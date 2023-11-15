@@ -1,4 +1,4 @@
-import { getNowPlaying } from '@/app/libs/spotify'
+import { getNowPlaying } from '@/libs/spotify'
 
 export async function GET(req: Request) {
   const token = req.headers.get('token')
