@@ -1,21 +1,25 @@
 'use client'
 
-import { SessionProvider, signIn, signOut, useSession } from 'next-auth/react'
+import { SessionProvider, signIn, signOut } from 'next-auth/react'
+import { Session } from 'next-auth'
 import { Button } from './ui'
+import Link from 'next/link'
 
-const Info = () => {
-  const { data, status } = useSession()
-  console.log(data, status)
+type AccountProps = { session: Session | null }
 
-  if (status === 'authenticated') {
-    const { accessToken, user } = data
+const Information = ({ session }: AccountProps) => {
+  if (session) {
+    const { accessToken, user } = session
 
     return (
-      <div>
+      <div className="flex flex-col space-y-4">
         <p>Signed in as {user.name}</p>
         <p>
           {accessToken.substring(0, 15)}...{accessToken.substr(-15)}
         </p>
+        <Link href={`/spotify/currently-playing?token=${accessToken}`}>
+          Currently Playing Page
+        </Link>
         <Button onClick={() => signOut()}>Sign out</Button>
       </div>
     )
@@ -28,10 +32,10 @@ const Info = () => {
   )
 }
 
-export const Account = () => {
+export const Account = ({ session }: AccountProps) => {
   return (
-    <SessionProvider basePath="/auth">
-      <Info />
+    <SessionProvider session={session} basePath="/auth">
+      <Information session={session} />
     </SessionProvider>
   )
 }
