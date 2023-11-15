@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 
+import clsx from 'clsx'
 import { Plus_Jakarta_Sans } from 'next/font/google'
 import './globals.css'
 
@@ -17,7 +18,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={plusJakartaSans.className}>{children}</body>
+      <body className={clsx(plusJakartaSans.className, 'bg-gray-300')}>
+        <main className="mx-auto max-w-5xl py-8">{children}</main>
+      </body>
     </html>
   )
 }

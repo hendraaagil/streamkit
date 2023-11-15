@@ -2,7 +2,7 @@
 
 import { SessionProvider, signIn, signOut } from 'next-auth/react'
 import { Session } from 'next-auth'
-import { Button } from './ui'
+import { Button } from '../ui'
 import Link from 'next/link'
 
 type AccountProps = { session: Session | null }
@@ -27,7 +27,9 @@ const Information = ({ session }: AccountProps) => {
 
   return (
     <div>
-      <Button onClick={() => signIn('spotify')}>Sign in</Button>
+      <Button onClick={() => signIn('spotify')} color="primary">
+        Sign in
+      </Button>
     </div>
   )
 }

@@ -1,13 +1,15 @@
-import { Account } from '@/components'
+import { Account } from '@/components/spotify'
+import { Heading } from '@/components/ui'
 import { getAuth } from '@/libs/next-auth'
 
 export default async function Page() {
   const auth = await getAuth()
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center space-y-4 text-center">
-      <h1 className="text-2xl font-bold">Spotify</h1>
+    <section className="flex flex-col space-y-4">
+      <Heading size="h1">Spotify</Heading>
+      <hr className="border-gray-900" />
       <Account session={auth} />
-    </main>
+    </section>
   )
 }

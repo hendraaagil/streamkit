@@ -1,14 +1,31 @@
-export const Button = ({
-  children,
-  ...props
-}: {
+import { tv, type VariantProps } from 'tailwind-variants'
+
+const styles = tv({
+  base: 'rounded px-4 py-2 transition-opacity hover:opacity-90',
+  variants: {
+    color: {
+      primary: 'bg-blue-500 text-white',
+      neutral: 'bg-zinc-500 text-white',
+    },
+  },
+  defaultVariants: {
+    color: 'neutral',
+  },
+})
+
+type ButtonVariants = VariantProps<typeof styles>
+
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   children: React.ReactNode
-} & React.ButtonHTMLAttributes<HTMLButtonElement>) => {
+}
+
+export const Button = ({
+  color,
+  children,
+  ...rest
+}: ButtonProps & ButtonVariants) => {
   return (
-    <button
-      className="rounded bg-green-500 px-4 py-2 font-semibold text-white hover:bg-green-700"
-      {...props}
-    >
+    <button className={styles({ color: color })} {...rest}>
       {children}
     </button>
   )
