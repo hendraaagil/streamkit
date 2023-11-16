@@ -1,4 +1,4 @@
-import { Music } from 'lucide-react'
+import { Gamepad2, Music, Users2 } from 'lucide-react'
 
 import { CardLink } from '@/components/home'
 import { Heading } from '@/components/ui'
@@ -8,15 +8,20 @@ const menus = [
     icon: <Music />,
     content: 'Spotify',
     link: '/spotify',
+    isExternal: false,
   },
-  // {
-  //   content: 'Spotify',
-  //   link: '/spotify',
-  // },
-  // {
-  //   content: 'Spotify',
-  //   link: '/spotify',
-  // },
+  {
+    icon: <Gamepad2 />,
+    content: 'Gamepad',
+    link: 'https://gamepadviewer.com/',
+    isExternal: true,
+  },
+  {
+    icon: <Users2 />,
+    content: 'Discord',
+    link: 'https://streamkit.discord.com/overlay',
+    isExternal: true,
+  },
 ]
 
 export default function Home() {
@@ -27,10 +32,11 @@ export default function Home() {
       <div className="grid grid-cols-3 gap-4">
         {menus.map((menu) => (
           <CardLink
+            key={menu.content}
             icon={menu.icon}
             content={menu.content}
             link={menu.link}
-            key={menu.content}
+            isExternal={menu.isExternal}
           />
         ))}
       </div>

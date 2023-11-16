@@ -1,11 +1,13 @@
 import { tv, type VariantProps } from 'tailwind-variants'
 
 const styles = tv({
-  base: 'rounded px-4 py-2 transition-opacity hover:opacity-90',
+  base: 'rounded px-4 py-2 font-medium transition-opacity hover:opacity-90',
   variants: {
     color: {
-      primary: 'bg-blue-500 text-white',
-      neutral: 'bg-zinc-500 text-white',
+      neutral: 'bg-zinc-700 text-white',
+      green: 'bg-green-700 text-white',
+      blue: 'bg-blue-700 text-white',
+      red: 'bg-red-700 text-white',
     },
   },
   defaultVariants: {

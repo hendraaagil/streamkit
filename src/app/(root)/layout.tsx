@@ -2,7 +2,9 @@ import type { Metadata } from 'next'
 
 import clsx from 'clsx'
 import { Plus_Jakarta_Sans } from 'next/font/google'
-import './globals.css'
+
+import { ProgressProviders } from '@/components/home'
+import '@/app/globals.css'
 
 const plusJakartaSans = Plus_Jakarta_Sans({ subsets: ['latin'] })
 
@@ -18,8 +20,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={clsx(plusJakartaSans.className, 'bg-gray-300')}>
-        <main className="mx-auto max-w-5xl py-8">{children}</main>
+      <body
+        className={clsx(plusJakartaSans.className, 'bg-gray-300 text-gray-900')}
+      >
+        <ProgressProviders>
+          <main className="mx-auto max-w-5xl px-2 py-8">{children}</main>
+        </ProgressProviders>
       </body>
     </html>
   )
