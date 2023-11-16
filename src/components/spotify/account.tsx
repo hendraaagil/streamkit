@@ -3,6 +3,7 @@
 import { SessionProvider, signIn, signOut } from 'next-auth/react'
 import { Session } from 'next-auth'
 import { useRouter } from 'next/navigation'
+import toast from 'react-hot-toast'
 
 import { Button } from '@/components/ui'
 
@@ -23,19 +24,37 @@ const Information = ({ session }: AccountProps) => {
   if (session) {
     const { accessToken, user } = session
 
+    const handleCopy = () => {
+      const origin = window.location.origin
+      const copyToClipboard = navigator.clipboard.writeText(
+        origin + `/spotify/currently-playing?token=${accessToken}`,
+      )
+
+      toast.promise(
+        copyToClipboard,
+        {
+          loading: 'Copying to clipboard...',
+          success: 'Copied to clipboard!',
+          error: 'Failed to copy to clipboard.',
+        },
+        { success: { icon: '📋', duration: 3000 } },
+      )
+    }
+
     return (
       <Container>
         <p>
           Signed in as <strong>{user.name}</strong>
         </p>
-        <a
-          href={`/spotify/currently-playing?token=${accessToken}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-full rounded bg-green-700 px-4 py-2 text-center text-white transition-opacity hover:opacity-90"
-        >
-          Open Currently Playing Page
-        </a>
+        <iframe
+          title="Preview of the currently playing song on Spotify"
+          src={`/spotify/currently-playing?token=${accessToken}`}
+          className="rounded bg-gray-400"
+          height={120}
+        />
+        <Button color="green" onClick={handleCopy}>
+          Copy URL
+        </Button>
         <Button onClick={() => signOut()} color="red">
           Sign out
         </Button>
@@ -46,7 +65,7 @@ const Information = ({ session }: AccountProps) => {
   return (
     <Container>
       <p>
-        You must <strong>sign in first</strong>
+        You must <strong>sign in</strong> first
       </p>
       <Button onClick={() => signIn('spotify')} color="green">
         Sign in

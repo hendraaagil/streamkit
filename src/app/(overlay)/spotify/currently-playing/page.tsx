@@ -15,13 +15,14 @@ const Container = ({
   children: React.ReactNode
   imageUrl: string
 }) => (
-  <div className="bg-spotify-green m-2 flex max-w-xs items-center space-x-4 rounded p-2">
+  <div className="m-2 flex max-w-xs items-center space-x-4 rounded bg-spotify-green p-2 text-spotify-dark">
     <Image
       alt="Album cover"
       src={imageUrl}
       width={128}
       height={128}
       className="w-16 rounded"
+      priority
     />
     <div className="flex flex-col">{children}</div>
   </div>
@@ -36,7 +37,7 @@ export default function Page({
     '/api/spotify/currently-playing',
     (url) => fetcher(url, searchParams.token as string),
     {
-      refreshInterval: 5000,
+      refreshInterval: 6000,
     },
   )
 

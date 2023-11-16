@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 
 import clsx from 'clsx'
 import { Plus_Jakarta_Sans } from 'next/font/google'
+import { Toaster } from 'react-hot-toast'
 
 import { ProgressProviders } from '@/components/home'
 import '@/app/globals.css'
@@ -25,6 +26,7 @@ export default function RootLayout({
       >
         <ProgressProviders>
           <main className="mx-auto max-w-5xl px-2 py-8">{children}</main>
+          <Toaster />
         </ProgressProviders>
       </body>
     </html>
