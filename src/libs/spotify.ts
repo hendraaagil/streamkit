@@ -31,6 +31,9 @@ export const getNowPlaying = async (
   token: string,
 ): Promise<SpotifyNowPlaying> => {
   const { access_token } = await getAccessToken(token)
+  if (!access_token) {
+    return { isPlaying: false }
+  }
 
   const response = await fetch(NOW_PLAYING_ENDPOINT, {
     headers: {

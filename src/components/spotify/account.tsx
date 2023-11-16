@@ -3,6 +3,7 @@
 import { SessionProvider, signIn, signOut } from 'next-auth/react'
 import { Session } from 'next-auth'
 import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 import toast from 'react-hot-toast'
 
 import { Button } from '@/components/ui'
@@ -21,13 +22,18 @@ const Container = ({ children }: { children: React.ReactNode }) => {
 }
 
 const Information = ({ session }: AccountProps) => {
+  const [checked, setChecked] = useState(false)
+
   if (session) {
     const { accessToken, user } = session
+    const overlayPath = `/spotify/currently-playing?token=${accessToken}${
+      checked ? '&theme=dark' : ''
+    }`
 
     const handleCopy = () => {
       const origin = window.location.origin
       const copyToClipboard = navigator.clipboard.writeText(
-        origin + `/spotify/currently-playing?token=${accessToken}`,
+        origin + overlayPath,
       )
 
       toast.promise(
@@ -44,13 +50,25 @@ const Information = ({ session }: AccountProps) => {
     return (
       <Container>
         <p>
-          Signed in as <strong>{user.name}</strong>
+          Signed in as <strong>{user.name}</strong>.
         </p>
+        <div className="flex items-center">
+          <input
+            id="theme"
+            type="checkbox"
+            className="h-4 w-4 rounded"
+            onChange={(event) => setChecked(event.target.checked)}
+            checked={checked}
+          />
+          <label htmlFor="theme" className="ms-2">
+            Dark theme
+          </label>
+        </div>
         <iframe
           title="Preview of the currently playing song on Spotify"
-          src={`/spotify/currently-playing?token=${accessToken}`}
+          src={overlayPath}
           className="rounded bg-gray-400"
-          height={120}
+          height={96}
         />
         <Button color="green" onClick={handleCopy}>
           Copy URL
