@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import { Plus_Jakarta_Sans } from 'next/font/google'
 import { Toaster } from 'react-hot-toast'
 
-import { ProgressProviders } from '@/components/home'
+import { Footer, ProgressProviders } from '@/components/home'
 import '@/app/globals.css'
 
 const plusJakartaSans = Plus_Jakarta_Sans({ subsets: ['latin'] })
@@ -25,7 +25,10 @@ export default function RootLayout({
         className={clsx(plusJakartaSans.className, 'bg-gray-300 text-gray-900')}
       >
         <ProgressProviders>
-          <main className="mx-auto max-w-5xl px-2 py-8">{children}</main>
+          <main className="mx-auto min-h-screen max-w-5xl px-2 py-8">
+            {children}
+          </main>
+          <Footer />
           <Toaster />
         </ProgressProviders>
       </body>
