@@ -12,7 +12,9 @@ export default function OverlayLayout({
 }) {
   return (
     <html lang="en">
-      <body className={fontSans.className}>{children}</body>
+      <body className={fontSans.className} suppressHydrationWarning>
+        {children}
+      </body>
     </html>
   )
 }
