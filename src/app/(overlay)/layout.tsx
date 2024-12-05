@@ -1,7 +1,9 @@
-import { Plus_Jakarta_Sans } from 'next/font/google'
+import { Gabarito as FontSans } from 'next/font/google'
 import '@/app/globals.css'
 
-const plusJakartaSans = Plus_Jakarta_Sans({ subsets: ['latin'] })
+const fontSans = FontSans({ subsets: ['latin'] })
+
+export const dynamic = 'force-dynamic'
 
 export default function OverlayLayout({
   children,
@@ -10,7 +12,7 @@ export default function OverlayLayout({
 }) {
   return (
     <html lang="en">
-      <body className={plusJakartaSans.className}>{children}</body>
+      <body className={fontSans.className}>{children}</body>
     </html>
   )
 }
