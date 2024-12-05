@@ -28,9 +28,7 @@ export default function RootLayout({
         )}
       >
         <ProgressProviders>
-          <main className="mx-auto min-h-screen max-w-5xl px-2 py-8">
-            {children}
-          </main>
+          <main className="mx-auto max-w-5xl px-2 py-8">{children}</main>
           <Footer />
           <Toaster />
         </ProgressProviders>
