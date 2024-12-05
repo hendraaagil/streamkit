@@ -1,7 +1,11 @@
+import { Scene } from '@/components/ui'
+
 export default function Page() {
   return (
-    <div>
-      <h1>Stream Ending</h1>
-    </div>
+    <Scene
+      text1="Stream is ending..."
+      text2="Thank you for watching!"
+      emoji="👋"
+    />
   )
 }
