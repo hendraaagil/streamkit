@@ -1,9 +1,34 @@
-import { Gamepad2, Music, Users2 } from 'lucide-react'
+import {
+  CirclePlay,
+  Gamepad2,
+  MonitorOff,
+  Music,
+  Pause,
+  Users2,
+} from 'lucide-react'
 
 import { CardLink } from '@/components/home'
 import { Heading } from '@/components/ui'
 
 const menus = [
+  {
+    icon: <CirclePlay />,
+    content: 'Stream Starting',
+    link: '/starting',
+    isExternal: false,
+  },
+  {
+    icon: <Pause />,
+    content: 'Be Right Back',
+    link: '/brb',
+    isExternal: false,
+  },
+  {
+    icon: <MonitorOff />,
+    content: 'Stream Ending',
+    link: '/ending',
+    isExternal: false,
+  },
   {
     icon: <Music />,
     content: 'Spotify',
