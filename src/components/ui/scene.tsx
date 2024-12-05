@@ -52,8 +52,8 @@ export const Scene = ({ text1, text2, emoji }: SceneProps) => {
   const text = useTextSwitch(text1, text2, 5000)
 
   return (
-    <div className="relative flex h-[1080px] w-[1920px] flex-col justify-center overflow-hidden bg-gray-900">
-      <p className="animate-wiggle absolute left-0 top-0 m-24 text-9xl">
+    <div className="relative flex h-[1080px] w-[1920px] flex-col justify-center overflow-hidden bg-slate-900">
+      <p className="absolute left-0 top-0 m-24 animate-wiggle text-9xl">
         {emoji}
       </p>
 
