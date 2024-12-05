@@ -2,13 +2,15 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { TZDate } from '@date-fns/tz'
 
 export const Clock = () => {
-  const [time, setTime] = useState(new Date())
+  // TODO: find a better way to find the timezone
+  const [time, setTime] = useState(new TZDate(new Date(), 'Asia/Jakarta'))
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setTime(new Date())
+      setTime(new TZDate(new Date(), 'Asia/Jakarta'))
     }, 1000)
 
     return () => {
