@@ -42,7 +42,7 @@ export const CardLink = ({
 }) => {
   return (
     <Wrapper link={link} isExternal={isExternal}>
-      <div className="flex space-x-4 rounded p-6 shadow transition-colors hover:bg-gray-400">
+      <div className="flex space-x-4 rounded border border-slate-800 p-6 transition-colors hover:bg-slate-800">
         {icon}
         <p className="font-medium">{content}</p>
       </div>

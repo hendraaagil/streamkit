@@ -2,7 +2,7 @@ import { Github } from 'lucide-react'
 
 export const Footer = () => (
   <footer className="mx-auto max-w-5xl px-2 pb-4 text-sm">
-    <hr className="mb-4 border-gray-900" />
+    <hr className="mb-4 border-slate-800" />
     <div className="flex justify-between">
       <p className="flex items-center">
         <Github className="mr-2 h-4 w-4" />

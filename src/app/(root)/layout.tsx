@@ -20,9 +20,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body
-        className={clsx(plusJakartaSans.className, 'bg-gray-300 text-gray-900')}
+        className={clsx(
+          plusJakartaSans.className,
+          'bg-slate-900 text-slate-50',
+        )}
       >
         <ProgressProviders>
           <main className="mx-auto min-h-screen max-w-5xl px-2 py-8">

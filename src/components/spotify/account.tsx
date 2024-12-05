@@ -16,7 +16,9 @@ const Container = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex w-full flex-col space-y-4">
       {children}
-      <Button onClick={() => router.replace('/')}>Back to Home</Button>
+      <Button variant="ghost" onClick={() => router.replace('/')}>
+        Back to Home
+      </Button>
     </div>
   )
 }
@@ -67,13 +69,11 @@ const Information = ({ session }: AccountProps) => {
         <iframe
           title="Preview of the currently playing song on Spotify"
           src={overlayPath}
-          className="rounded bg-gray-400"
+          className="rounded"
           height={96}
         />
-        <Button color="green" onClick={handleCopy}>
-          Copy URL
-        </Button>
-        <Button onClick={() => signOut()} color="red">
+        <Button onClick={handleCopy}>Copy URL</Button>
+        <Button variant="destructive" onClick={() => signOut()}>
           Sign out
         </Button>
       </Container>
@@ -85,9 +85,7 @@ const Information = ({ session }: AccountProps) => {
       <p>
         You must <strong>sign in</strong> first
       </p>
-      <Button onClick={() => signIn('spotify')} color="green">
-        Sign in
-      </Button>
+      <Button onClick={() => signIn('spotify')}>Sign in</Button>
     </Container>
   )
 }
