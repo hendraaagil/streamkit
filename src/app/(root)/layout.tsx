@@ -26,6 +26,7 @@ export default function RootLayout({
           plusJakartaSans.className,
           'bg-slate-900 text-slate-50',
         )}
+        suppressHydrationWarning
       >
         <ProgressProviders>
           <main className="mx-auto max-w-5xl px-2 py-8">{children}</main>
