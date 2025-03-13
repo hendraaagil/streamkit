@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTextSwitch } from '@/hooks/use-text-switch'
-import { Clock } from '@/components/ui'
+import { Clock, Squares } from '@/components/ui'
 
 const AnimatedLetter = ({
   letter,
@@ -52,7 +52,11 @@ export const Scene = ({ text1, text2, emoji }: SceneProps) => {
   const text = useTextSwitch(text1, text2, 5000)
 
   return (
-    <div className="relative flex h-[1080px] w-[1920px] flex-col justify-center overflow-hidden bg-slate-900">
+    <div className="relative flex h-[1080px] w-[1920px] flex-col justify-center overflow-hidden">
+      <div className="absolute inset-0 -z-10">
+        <Squares speed={0.3} squareSize={120} direction="diagonal" />
+      </div>
+
       <p className="absolute left-0 top-0 m-24 animate-wiggle text-9xl">
         {emoji}
       </p>
