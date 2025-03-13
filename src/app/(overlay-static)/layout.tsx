@@ -1,0 +1,20 @@
+import { Gabarito as FontSans } from 'next/font/google'
+import '@/app/globals.css'
+
+const fontSans = FontSans({ subsets: ['latin'] })
+
+export const dynamic = 'force-static'
+
+export default function OverlayLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <body className={fontSans.className} suppressHydrationWarning>
+        {children}
+      </body>
+    </html>
+  )
+}
