@@ -1,1 +1,4 @@
-*lock*
+# Ignore all known JS lockfiles
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
