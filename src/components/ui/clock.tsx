@@ -1,34 +1,42 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { TZDate } from '@date-fns/tz'
+import { cn } from '@/libs/utils'
 
-export const Clock = () => {
+type ClockProps = {
+  className?: string
+}
+
+export const Clock = ({ className }: ClockProps) => {
   // TODO: find a better way to find the timezone
-  const [time, setTime] = useState(new TZDate(new Date(), 'Asia/Jakarta'))
+  const [time, setTime] = useState(() => new TZDate(new Date(), 'Asia/Jakarta'))
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTime(new TZDate(new Date(), 'Asia/Jakarta'))
-    }, 1000)
-
-    return () => {
-      clearInterval(timer)
-    }
+  // Memoize the update function to prevent recreating it on every render
+  const updateTime = useCallback(() => {
+    setTime(new TZDate(new Date(), 'Asia/Jakarta'))
   }, [])
 
-  const formatTime = (date: Date) => {
-    const hours = date.getHours().toString().padStart(2, '0')
-    const minutes = date.getMinutes().toString().padStart(2, '0')
-    const seconds = date.getSeconds().toString().padStart(2, '0')
-    return [hours, minutes, seconds]
-  }
+  useEffect(() => {
+    const timer = setInterval(updateTime, 1000)
+    return () => clearInterval(timer)
+  }, [updateTime])
 
-  const [hours, minutes, seconds] = formatTime(time)
+  const { hours, minutes, seconds } = useMemo(() => {
+    const h = time.getHours().toString().padStart(2, '0')
+    const m = time.getMinutes().toString().padStart(2, '0')
+    const s = time.getSeconds().toString().padStart(2, '0')
+    return { hours: h, minutes: m, seconds: s }
+  }, [time])
 
   return (
-    <div className="absolute bottom-0 right-0 m-24 flex rounded-lg bg-slate-800 px-10 py-8 text-7xl font-bold text-slate-50">
+    <div
+      className={cn(
+        'flex max-w-fit rounded-lg bg-slate-800 px-10 py-8 text-7xl font-bold text-slate-50',
+        className,
+      )}
+    >
       <AnimatedDigit digit={hours[0]} />
       <AnimatedDigit digit={hours[1]} />
       <span className="mx-1">:</span>
@@ -50,7 +58,11 @@ function AnimatedDigit({ digit }: { digit: string }) {
           initial={{ y: '100%' }}
           animate={{ y: 0 }}
           exit={{ y: '-100%' }}
-          transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+          transition={{
+            type: 'tween',
+            duration: 0.25,
+            ease: 'easeOut',
+          }}
           className="absolute inset-0 flex items-center justify-center"
           suppressHydrationWarning
         >

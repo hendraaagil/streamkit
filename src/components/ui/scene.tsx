@@ -76,7 +76,7 @@ export const Scene = ({ text1, text2, emoji }: SceneProps) => {
         </AnimatePresence>
       </h1>
 
-      <Clock />
+      <Clock className="absolute bottom-0 right-0 m-24" />
     </div>
   )
 }
