@@ -1,5 +1,6 @@
 import {
   CirclePlay,
+  Clock,
   Gamepad2,
   MonitorOff,
   Music,
@@ -27,6 +28,12 @@ const menus = [
     icon: <MonitorOff />,
     content: 'Stream Ending',
     link: '/ending',
+    isExternal: false,
+  },
+  {
+    icon: <Clock />,
+    content: 'Local Time',
+    link: '/time',
     isExternal: false,
   },
   {
