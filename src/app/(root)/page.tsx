@@ -2,6 +2,7 @@ import {
   CirclePlay,
   Clock,
   Gamepad2,
+  Image as ImageIcon,
   MonitorOff,
   Music,
   Pause,
@@ -12,6 +13,12 @@ import { CardLink } from '@/components/home'
 import { Heading } from '@/components/ui'
 
 const menus = [
+  {
+    icon: <ImageIcon />,
+    content: 'Thumbnail Generator',
+    link: '/thumbnail',
+    isExternal: false,
+  },
   {
     icon: <CirclePlay />,
     content: 'Stream Starting',
