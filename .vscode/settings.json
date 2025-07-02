@@ -1,5 +1,3 @@
 {
-  "tailwindCSS.experimental.classRegex": [
-    ["tv\\((([^()]*|\\([^()]*\\))*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
-  ]
+  "tailwindCSS.classFunctions": ["cva", "cn"]
 }
