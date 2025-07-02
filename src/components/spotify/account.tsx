@@ -58,7 +58,7 @@ const Information = ({ session }: AccountProps) => {
           <input
             id="theme"
             type="checkbox"
-            className="h-4 w-4 rounded"
+            className="size-4 rounded"
             onChange={(event) => setChecked(event.target.checked)}
             checked={checked}
           />

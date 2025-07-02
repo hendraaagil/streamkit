@@ -35,7 +35,7 @@ export const CardLink = ({
   link,
   isExternal,
 }: {
-  icon: JSX.Element
+  icon: React.ReactNode
   content: string
   link: string
   isExternal?: boolean

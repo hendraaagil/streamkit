@@ -5,7 +5,7 @@ export const Footer = () => (
     <hr className="mb-4 border-slate-800" />
     <div className="flex justify-between">
       <p className="flex items-center">
-        <Github className="mr-2 h-4 w-4" />
+        <Github className="mr-2 size-4" />
         <a
           href="https://github.com/hendraaagil/streamkit"
           target="_blank"
