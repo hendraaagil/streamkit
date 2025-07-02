@@ -1,27 +1,30 @@
 import { format } from 'date-fns'
+import { forwardRef } from 'react'
+import { gabarito } from '@/libs/fonts'
+import { cn } from '@/libs/utils'
 
 type ThumbnailPreviewProps = React.HTMLAttributes<HTMLDivElement> & {
-  ref?: React.Ref<HTMLDivElement>
   title: string
   backgroundImage?: string
 }
 
-export const ThumbnailPreview = ({
-  title,
-  backgroundImage,
-  ref,
-}: ThumbnailPreviewProps) => {
+export const ThumbnailPreview = forwardRef<
+  HTMLDivElement,
+  ThumbnailPreviewProps
+>(({ title, backgroundImage }, ref) => {
   const date = format(new Date(), 'iiii, d MMMM yyyy')
 
   return (
     <div
       ref={ref}
-      className="relative h-full w-full overflow-hidden"
+      className={cn(
+        gabarito.className,
+        'relative h-full w-full overflow-hidden',
+      )}
       style={{
         width: '1280px',
         height: '720px',
         transformOrigin: 'top left',
-        fontFamily: 'Gabarito, system-ui, sans-serif',
       }}
     >
       <div
@@ -84,4 +87,6 @@ export const ThumbnailPreview = ({
       </div>
     </div>
   )
-}
+})
+
+ThumbnailPreview.displayName = 'ThumbnailPreview'

@@ -1,14 +1,11 @@
 import type { Metadata } from 'next'
 
 import clsx from 'clsx'
-import { Gabarito, Plus_Jakarta_Sans } from 'next/font/google'
 import { Toaster } from 'react-hot-toast'
 
+import { plusJakartaSans } from '@/libs/fonts'
 import { Footer, ProgressProviders } from '@/components/home'
 import '@/app/globals.css'
-
-const gabarito = Gabarito({ subsets: ['latin'] })
-const plusJakartaSans = Plus_Jakarta_Sans({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'StreamKit',
@@ -24,7 +21,6 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body
         className={clsx(
-          gabarito.className,
           plusJakartaSans.className,
           'bg-slate-900 text-slate-50',
         )}

@@ -1,7 +1,5 @@
-import { Gabarito as FontSans } from 'next/font/google'
+import { gabarito } from '@/libs/fonts'
 import '@/app/globals.css'
-
-const fontSans = FontSans({ subsets: ['latin'] })
 
 export const dynamic = 'force-dynamic'
 
@@ -12,7 +10,7 @@ export default function OverlayLayout({
 }) {
   return (
     <html lang="en">
-      <body className={fontSans.className} suppressHydrationWarning>
+      <body className={gabarito.className} suppressHydrationWarning>
         {children}
       </body>
     </html>
