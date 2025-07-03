@@ -1,5 +1,6 @@
 import { format } from 'date-fns'
 import { forwardRef } from 'react'
+import { Clock } from 'lucide-react'
 import { gabarito } from '@/libs/fonts'
 import { cn } from '@/libs/utils'
 
@@ -28,41 +29,38 @@ export const ThumbnailPreview = forwardRef<
       }}
     >
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundColor: backgroundImage ? 'transparent' : '#0F172A',
           backgroundImage: backgroundImage ? `url(${backgroundImage})` : 'none',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
         }}
       />
 
       <div
-        className="absolute inset-0 flex flex-col justify-between text-white"
+        className={cn(
+          'absolute inset-0 flex flex-col justify-between border-[20px] px-12 py-8 text-slate-50',
+          {
+            'border-slate-600': !backgroundImage,
+            'border-slate-900': backgroundImage,
+          },
+        )}
         style={{
-          padding: '32px 48px',
           background:
             'linear-gradient(130deg, rgba(15, 23, 42, 0.99) 10%, rgba(15, 23, 42, 0.85) 70%, rgba(15, 23, 42, 0.65) 105%)',
-          border: '20px solid #0F172A',
         }}
       >
-        <p style={{ fontSize: '24px', margin: 0 }}>{date}</p>
-        <div
-          style={{
-            fontSize: '64px',
-            margin: 0,
-            fontWeight: 'bold',
-            lineHeight: '1.1',
-            textAlign: 'left',
-          }}
-        >
+        <div className="flex items-center text-slate-400">
+          <Clock className="mr-4 size-6" />
+          <p className="text-2xl font-medium">{date}</p>
+        </div>
+        <div className="text-7xl font-bold leading-none">
           {title.split('\n').map((line, index) => (
             <div
               key={index}
-              style={{
-                marginBottom:
-                  index === title.split('\n').length - 1 ? 0 : '8px',
-              }}
+              className={cn({
+                'mb-2': index < title.split(' ').length - 1,
+                'mb-0': index === title.split(' ').length - 1,
+              })}
             >
               {line || '\u00A0'} {/* Non-breaking space for empty lines */}
             </div>
@@ -71,17 +69,8 @@ export const ThumbnailPreview = forwardRef<
 
         <div className="flex">
           <div className="flex flex-col justify-center">
-            <h2
-              style={{
-                margin: 0,
-                marginBottom: '6px',
-                fontSize: '32px',
-                fontWeight: 'bold',
-              }}
-            >
-              Hendra Agil
-            </h2>
-            <p style={{ margin: 0, fontSize: '24px' }}>Software Engineer</p>
+            <h2 className="mb-1 text-4xl font-bold">Hendra Agil</h2>
+            <p className="text-xl text-slate-400">Software Engineer</p>
           </div>
         </div>
       </div>

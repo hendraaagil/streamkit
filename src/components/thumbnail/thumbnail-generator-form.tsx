@@ -46,7 +46,7 @@ export function ThumbnailGeneratorForm() {
             })
 
       const link = document.createElement('a')
-      link.download = `thumbnail-${title.replace(/[^a-z0-9]/gi, '_').toLowerCase()}-${Date.now()}.${format}`
+      link.download = `thumbnail-${Date.now()}.${format}`
       link.href = dataUrl
       link.click()
     } catch (error) {
@@ -70,7 +70,7 @@ export function ThumbnailGeneratorForm() {
 
   return (
     <div className="py-8">
-      <div className="container mx-auto max-w-4xl px-4">
+      <div className="container mx-auto max-w-5xl px-4">
         <div className="mb-6">
           <Button
             onClick={() => router.push('/')}
@@ -188,7 +188,7 @@ export function ThumbnailGeneratorForm() {
 
           <div className="space-y-4">
             <h2 className="text-xl font-semibold">Live Preview</h2>
-            <div className="rounded border border-slate-800 bg-slate-700 p-4 shadow-sm">
+            <div className="rounded border border-slate-800 bg-slate-100 p-4 shadow-sm">
               <div className="w-full overflow-x-auto py-2">
                 <ThumbnailPreview
                   ref={thumbnailRef}
