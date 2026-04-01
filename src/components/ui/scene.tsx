@@ -3,6 +3,8 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTextSwitch } from '@/hooks/use-text-switch'
 import { Clock, Squares } from '@/components/ui'
+import { notoColorEmoji } from '@/libs/fonts'
+import { cn } from '@/libs/utils'
 
 const AnimatedLetter = ({
   letter,
@@ -57,7 +59,12 @@ export const Scene = ({ text1, text2, emoji }: SceneProps) => {
         <Squares speed={0.3} squareSize={120} direction="diagonal" />
       </div>
 
-      <p className="absolute left-0 top-0 m-24 animate-wiggle text-9xl">
+      <p
+        className={cn(
+          notoColorEmoji.className,
+          'absolute left-0 top-0 m-24 animate-wiggle text-9xl',
+        )}
+      >
         {emoji}
       </p>
 
