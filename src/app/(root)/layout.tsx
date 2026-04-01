@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import clsx from 'clsx'
 import { Toaster } from 'react-hot-toast'
 
-import { plusJakartaSans } from '@/libs/fonts'
+import { plusJakartaSans as fontSans } from '@/libs/fonts'
 import { Footer, ProgressProviders } from '@/components/home'
 import '@/app/globals.css'
 
@@ -20,10 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={clsx(
-          plusJakartaSans.className,
-          'bg-slate-900 text-slate-50',
-        )}
+        className={clsx(fontSans.className, 'bg-slate-900 text-slate-50')}
         suppressHydrationWarning
       >
         <ProgressProviders>
