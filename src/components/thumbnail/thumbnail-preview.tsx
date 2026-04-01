@@ -1,7 +1,7 @@
 import { format } from 'date-fns'
 import { forwardRef } from 'react'
 import { Clock } from 'lucide-react'
-import { gabarito } from '@/libs/fonts'
+import { gabarito, notoColorEmoji } from '@/libs/fonts'
 import { cn } from '@/libs/utils'
 
 type ThumbnailPreviewProps = React.HTMLAttributes<HTMLDivElement> & {
@@ -20,12 +20,14 @@ export const ThumbnailPreview = forwardRef<
       ref={ref}
       className={cn(
         gabarito.className,
+        notoColorEmoji.variable,
         'relative h-full w-full overflow-hidden',
       )}
       style={{
         width: '1280px',
         height: '720px',
         transformOrigin: 'top left',
+        fontFamily: 'Gabarito, var(--font-noto-color-emoji), sans-serif',
       }}
     >
       <div

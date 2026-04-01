@@ -5,4 +5,5 @@ export const plusJakartaSans = Plus_Jakarta_Sans({ subsets: ['latin'] })
 export const notoColorEmoji = Noto_Color_Emoji({
   weight: '400',
   subsets: ['emoji'],
+  variable: '--font-noto-color-emoji',
 })
